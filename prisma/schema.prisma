@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // proviewFeatures = ["selectRelationCount", "fullTextSearch"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+}
+
+model Aluno {
+  id            String      @id @default(uuid())
+  nome          String
+  nascimento    DateTime
+  cpf           String      @unique
+  email         String
+  serie         Serie       @relation(fields: [serieId], references: [id])
+  serieId       String
+  turno         Turno       @relation(fields: [turnoId], references: [id])
+  turnoId       String
+  cidade        String
+  estado        String
+  matriculado   Boolean     @default(false)
+  updatedAt     DateTime    @default(now()) @updatedAt
+  createdAt     DateTime    @default(now())
+  resposavel    Responsavel @relation(fields: [responsavelId], references: [id])
+  responsavelId String
+}
+
+model Responsavel {
+  id        String   @id @default(uuid())
+  nome      String
+  email     String
+  telefone  String
+  updatedAt DateTime @default(now()) @updatedAt
+  createdAt DateTime @default(now())
+  Aluno     Aluno[]
+}
+
+model Serie {
+  id        String   @id @default(uuid())
+  name      String
+  Student   Aluno[]
+  updatedAt DateTime @default(now()) @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Turno {
+  id        String   @id @default(uuid())
+  name      String
+  Student   Aluno[]
+  updatedAt DateTime @default(now()) @updatedAt
+  createdAt DateTime @default(now())
+}
