@@ -2,15 +2,13 @@ import express, { Request, Response, NextFunction, Router } from 'express'
 
 import 'express-async-errors'
 
-// import { router } from "@routes/index";
+import { router } from '@routes/index'
 
 import { AppError } from './errors/AppError'
 
 export const app = express()
 
 app.use(express.json())
-
-const router = Router()
 
 app.use(router)
 
