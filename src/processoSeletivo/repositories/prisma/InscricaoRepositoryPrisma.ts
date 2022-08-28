@@ -2,6 +2,7 @@ import { Aluno, Prisma, Serie, Turno } from '@prisma/client'
 import { IInscricaoDTO } from 'processoSeletivo/dtos/IInscricaoDTO'
 import { IInscricaoRepository } from '../IInscricaoRepository'
 import { prisma } from '@shared/prisma'
+import { ISelectDTO } from 'processoSeletivo/dtos/ISelectDTO'
 
 export class InscricaoRepositoryPrisma implements IInscricaoRepository {
   async createInscricao(data: IInscricaoDTO): Promise<void> {
@@ -35,5 +36,19 @@ export class InscricaoRepositoryPrisma implements IInscricaoRepository {
   async findTurnoById(id: string): Promise<Turno | null> {
     const turno = await prisma.turno.findUnique({ where: { id } })
     return turno
+  }
+
+  async listSeries(): Promise<ISelectDTO[]> {
+    const series = await prisma.serie.findMany({
+      select: { id: true, name: true },
+    })
+    return series
+  }
+
+  async listTurnos(): Promise<ISelectDTO[]> {
+    const turnos = await prisma.turno.findMany({
+      select: { id: true, name: true },
+    })
+    return turnos
   }
 }
