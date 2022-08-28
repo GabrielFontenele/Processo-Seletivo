@@ -1,6 +1,6 @@
 import { AppError } from '@shared/errors/AppError'
-import { IInscricaoDTO } from 'processoSeletivo/dtos/IInscricaoDTO'
-import { IInscricaoRepository } from 'processoSeletivo/repositories/IInscricaoRepository'
+import { IInscricaoDTO } from '@modules/processoSeletivo/dtos/IInscricaoDTO'
+import { IInscricaoRepository } from '@modules/processoSeletivo/repositories/IInscricaoRepository'
 
 export class InscreverAlunoUseCase {
   constructor(private inscricaoRepository: IInscricaoRepository) {}

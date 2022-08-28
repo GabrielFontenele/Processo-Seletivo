@@ -1,5 +1,5 @@
-import { ISelectDTO } from 'processoSeletivo/dtos/ISelectDTO'
-import { IInscricaoRepository } from 'processoSeletivo/repositories/IInscricaoRepository'
+import { ISelectDTO } from '@modules/processoSeletivo/dtos/ISelectDTO'
+import { IInscricaoRepository } from '@modules/processoSeletivo/repositories/IInscricaoRepository'
 
 export class ListSeriesUseCase {
   constructor(private inscricaoRepository: IInscricaoRepository) {}

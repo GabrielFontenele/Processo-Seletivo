@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { InscreverAlunoController } from 'processoSeletivo/useCases/inscreverAluno/InscreverAlunoController'
-import { ListSeriesController } from 'processoSeletivo/useCases/listSeries/ListSeriesController'
-import { ListTurnosController } from 'processoSeletivo/useCases/listTurno/ListSeriesController'
+import { InscreverAlunoController } from '@modules/processoSeletivo/useCases/inscreverAluno/InscreverAlunoController'
+import { ListSeriesController } from '@modules/processoSeletivo/useCases/listSeries/ListSeriesController'
+import { ListTurnosController } from '@modules/processoSeletivo/useCases/listTurno/ListSeriesController'
 import { processoSeletivoDataValidation } from './middlewares/processoSeletivoDataValidation'
 
 export const processoSeletivoRoutes = Router()

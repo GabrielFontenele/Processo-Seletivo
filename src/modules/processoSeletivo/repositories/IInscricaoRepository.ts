@@ -1,6 +1,6 @@
 import { Aluno, Serie, Turno } from '@prisma/client'
-import { IInscricaoDTO } from 'processoSeletivo/dtos/IInscricaoDTO'
-import { ISelectDTO } from 'processoSeletivo/dtos/ISelectDTO'
+import { IInscricaoDTO } from '@modules/processoSeletivo/dtos/IInscricaoDTO'
+import { ISelectDTO } from '@modules/processoSeletivo/dtos/ISelectDTO'
 
 export interface IInscricaoRepository {
   createInscricao(data: IInscricaoDTO): Promise<void>

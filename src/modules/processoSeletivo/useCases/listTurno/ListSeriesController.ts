@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { InscricaoRepositoryPrisma } from 'processoSeletivo/repositories/prisma/InscricaoRepositoryPrisma'
+import { InscricaoRepositoryPrisma } from '@modules/processoSeletivo/repositories/prisma/InscricaoRepositoryPrisma'
 import { ListTurnosUseCase } from './ListTurnosUseCase'
 
 export class ListTurnosController {
