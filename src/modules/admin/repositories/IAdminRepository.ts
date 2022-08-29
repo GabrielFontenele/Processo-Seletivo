@@ -17,4 +17,11 @@ export interface IAdminRepository {
   findInscricoesCountByMatriculaState(matriculado: boolean): Promise<number>
   findAlunoById(alunoId: string): Promise<Aluno | null>
   updateMatriculaById(alunoId: string): Promise<void>
+  findAllAlunos(): Promise<
+    (Aluno & {
+      responsavel: Responsavel
+      serie: Serie
+      turno: Turno
+    })[]
+  >
 }

@@ -11,8 +11,8 @@ export class ListMatriculadosController {
       adminRepositoryPrisma,
     )
 
-    const token = await listMatriculadosUseCase.execute(page)
+    const list = await listMatriculadosUseCase.execute(page)
 
-    return response.json(token)
+    return response.json(list)
   }
 }

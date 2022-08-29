@@ -9,8 +9,8 @@ export class ListInscritosController {
     const adminRepositoryPrisma = new AdminRepositoryPrisma()
     const listInscritosUseCase = new ListInscritosUseCase(adminRepositoryPrisma)
 
-    const token = await listInscritosUseCase.execute(page)
+    const list = await listInscritosUseCase.execute(page)
 
-    return response.json(token)
+    return response.json(list)
   }
 }

@@ -70,4 +70,22 @@ export class AdminRepositoryPrisma implements IAdminRepository {
       data: { matriculado: true },
     })
   }
+
+  async findAllAlunos(): Promise<
+    (Aluno & {
+      responsavel: Responsavel
+      serie: Serie
+      turno: Turno
+    })[]
+  > {
+    const inscricao = await prisma.aluno.findMany({
+      include: {
+        responsavel: true,
+        serie: true,
+        turno: true,
+      },
+    })
+
+    return inscricao
+  }
 }
