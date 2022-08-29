@@ -35,7 +35,7 @@ model Aluno {
   matriculado   Boolean     @default(false)
   updatedAt     DateTime    @default(now()) @updatedAt
   createdAt     DateTime    @default(now())
-  resposavel    Responsavel @relation(fields: [responsavelId], references: [id])
+  responsavel   Responsavel @relation(fields: [responsavelId], references: [id])
   responsavelId String
 }
 

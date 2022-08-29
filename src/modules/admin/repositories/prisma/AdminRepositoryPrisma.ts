@@ -1,4 +1,4 @@
-import { User } from '@prisma/client'
+import { Aluno, Responsavel, Serie, Turno, User } from '@prisma/client'
 import { prisma } from '@shared/prisma'
 import { IAdminRepository } from '../IAdminRepository'
 
@@ -21,5 +21,40 @@ export class AdminRepositoryPrisma implements IAdminRepository {
     })
 
     return user
+  }
+
+  async findInscricoesByMatriculaState(
+    matriculado: boolean,
+    skip: number,
+    take: number,
+  ): Promise<
+    (Aluno & {
+      responsavel: Responsavel
+      serie: Serie
+      turno: Turno
+    })[]
+  > {
+    const inscricao = await prisma.aluno.findMany({
+      where: {
+        matriculado,
+      },
+      include: {
+        responsavel: true,
+        serie: true,
+        turno: true,
+      },
+      skip,
+      take,
+    })
+
+    return inscricao
+  }
+
+  async findInscricoesCountByMatriculaState(
+    matriculado: boolean,
+  ): Promise<number> {
+    const count = await prisma.aluno.count({ where: { matriculado } })
+
+    return count
   }
 }
