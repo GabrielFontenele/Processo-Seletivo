@@ -7,24 +7,29 @@ import { signinValidator } from './middlewares/signinValidator'
 import { genericZodValidator } from './middlewares/genericZodValidator'
 import { pageDataSchema } from './middlewares/pageValidation'
 import { ListMatriculadosController } from '@modules/admin/useCases/listMatriculados/ListMatriculadosController'
+import { SetMatriculadoController } from '@modules/admin/useCases/setMatriculado/SetMatriculadoController'
 
 export const adminRoutes = Router()
 
 const authenticateUserController = new AuthenticateUserController()
 const listInscritosController = new ListInscritosController()
 const listMatriculadosController = new ListMatriculadosController()
+const setMatriculadoController = new SetMatriculadoController()
 
 adminRoutes.post('/signin', signinValidator, authenticateUserController.handle)
 
 adminRoutes.use(ensureAuthenticated, ensureAdmin)
 
-adminRoutes.post(
+adminRoutes.get(
   '/listInscritos',
   genericZodValidator(pageDataSchema),
   listInscritosController.handle,
 )
-adminRoutes.post(
+
+adminRoutes.get(
   '/listMatriculados',
   genericZodValidator(pageDataSchema),
   listMatriculadosController.handle,
 )
+
+adminRoutes.put('/matricularAluno', setMatriculadoController.handle)

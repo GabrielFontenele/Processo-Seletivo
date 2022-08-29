@@ -57,4 +57,17 @@ export class AdminRepositoryPrisma implements IAdminRepository {
 
     return count
   }
+
+  async findAlunoById(alunoId: string): Promise<Aluno | null> {
+    const aluno = await prisma.aluno.findUnique({ where: { id: alunoId } })
+
+    return aluno
+  }
+
+  async updateMatriculaById(alunoId: string): Promise<void> {
+    await prisma.aluno.update({
+      where: { id: alunoId },
+      data: { matriculado: true },
+    })
+  }
 }

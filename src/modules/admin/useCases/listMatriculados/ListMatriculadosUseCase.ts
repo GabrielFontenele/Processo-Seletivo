@@ -21,6 +21,7 @@ export class ListMatriculadosUseCase {
 
     const results: IInscricaoDTO[] = inscricoesFound.map((inscricao) => {
       const {
+        id,
         nome,
         nascimento,
         cpf,
@@ -33,6 +34,7 @@ export class ListMatriculadosUseCase {
       } = inscricao
       return {
         aluno: {
+          id,
           nome,
           nascimento,
           cpf,

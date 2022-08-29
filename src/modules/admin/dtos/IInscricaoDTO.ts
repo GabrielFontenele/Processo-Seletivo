@@ -1,4 +1,5 @@
 interface IAluno {
+  id: string
   nome: string
   nascimento: Date
   cpf: string
